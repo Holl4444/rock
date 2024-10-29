@@ -1,23 +1,14 @@
-function getComputerChoice() {
-  let C_choice = Math.floor(Math.random() * 3); /*+ 1*/
-  /*switch (choice) {
-    case 1:
-      choice = "rock";
-      break;
-    case 2:
-      choice = "paper";
-      break;
-    case 3:
-      choice = "scissors";
-      break;
-    default:
-      choice = "An error has occurred";
-  }
-  return choice;
-*/
-  const choiceOptions = ["rock", "paper", "scissors"];
-  return choiceOptions[C_choice];
+const RPS_MAX = 3;
+const CHOICE_OPTIONS = ["rock", "paper", "scissors"];
+
+function getComputerChoice(max, array) {
+  /* Get a random number between 0 and 2*/
+  let C_choice = Math.floor(Math.random() * RPS_MAX);
+  /* Initialise array with game choice options */
+
+  return array[C_choice];
 }
+console.log(getComputerChoice(RPS_MAX, CHOICE_OPTIONS));
 
 function getHumanChoice() {
   let H_choice = prompt("rock, paper or scissors? ").toLowerCase();
