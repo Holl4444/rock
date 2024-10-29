@@ -7,7 +7,6 @@ function getComputerChoice(max, array) {
   // return what we find at this index of the array
   return array[C_choice];
 }
-console.log(getComputerChoice(RPS_MAX, CHOICE_OPTIONS));
 
 function getHumanChoice() {
   //ask user for choice input and cover for differences in case
@@ -24,7 +23,7 @@ function getHumanChoice() {
     invalidEntries++;
     if (invalidEntries > 3) {
       alert("Too many invalid entries, ending programme.");
-      break;
+      return "stop";
     } else {
       alert(`Sorry "${H_choice}" is not a valid option.`);
       H_choice = prompt("rock, paper or scissors? ").toLowerCase();
@@ -33,16 +32,98 @@ function getHumanChoice() {
   // All being well return valid choice
   return H_choice;
 }
-console.log(getHumanChoice());
 
-// initiate variables for scores and rounds
+// Initiate variables for scores and rounds
 let computerScore = 0;
 let humanScore = 0;
-let totalRounds = 5;
+let totalRounds = 3;
 let roundNumber = 1;
 
-function playRound(C_choice, H_choice) {
-  /* 
+// Funtion to determine the results from one round
+function playRound(compChoice, humanChoice) {
+  // If there's a draw don't update score/round number
+  if (compChoice === humanChoice) {
+    console.log("It's a draw, lets take that round again.");
+    return 0;
+  } else {
+    let winMessage = `You win! ${humanChoice} beats ${compChoice}.`;
+    let loseMessage = `You lose! ${compChoice} beats ${humanChoice}.`;
+    // Should add a winLose function to avoid so much here
+    // Checking through values to determine winner and print result.
+    switch (compChoice) {
+      case "rock":
+        if (humanChoice === "scissors") {
+          computerScore++;
+          console.log(loseMessage);
+        } else {
+          humanScore++;
+          console.log(winMessage);
+        }
+        break;
+      case "paper":
+        if (humanChoice === "rock") {
+          computerScore++;
+          console.log(loseMessage);
+        } else {
+          humanScore++;
+          console.log(winMessage);
+        }
+        break;
+      case "scissors":
+        if (humanChoice === "paper") {
+          computerScore++;
+          console.log(loseMessage);
+        } else {
+          humanScore++;
+          console.log(winMessage);
+        }
+        break;
+    }
+  }
+  //increase round number after a round that didn't end in a draw
+  roundNumber++;
+}
+
+// For every round of the game
+while (roundNumber <= totalRounds) {
+  // Announce the round number
+  console.log(`Round ${roundNumber}`);
+  if (
+    // if there have been too many invalid entries quit
+    playRound(getComputerChoice(RPS_MAX, CHOICE_OPTIONS), getHumanChoice()) ===
+    "stop"
+  ) {
+    break;
+  } else {
+    // If it's the last round (round number increased in playRound function so >)
+    if (roundNumber > totalRounds) {
+      continue;
+    } else {
+      // Report current scores
+      console.log(
+        `Current Score:  Computer: ${computerScore} You: ${humanScore}`
+      );
+    }
+  }
+}
+
+// After all rounds have been played announce final score
+console.log(`Final score:\nComputer: ${computerScore} You: ${humanScore};`);
+// Message ultimate win or loss
+if (humanScore > computerScore) {
+  console.log("*********YOU WIN!*********");
+} else {
+  console.log("**Computer won this time**");
+}
+
+// Reset variables before next game
+computerScore = 0;
+humanScore = 0;
+totalRounds = 3;
+roundNumber = 1;
+
+/* 
+  Pseudocode for playRound function
 
   If round number isn't more than the total number of rounds to play:
 
@@ -53,7 +134,7 @@ function playRound(C_choice, H_choice) {
   If they are both equal do not increment the number of rounds and message the human.
   "It's a draw, lets take that round again."
 
-  Else look at C_choise. 
+  Else look at the computer's choice. 
   
   rock > scissors
   paper > rock
@@ -91,4 +172,3 @@ function playRound(C_choice, H_choice) {
     let loseMessage = `You lose! The computer's choice beats your choice.`
   
    */
-}
