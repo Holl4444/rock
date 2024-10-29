@@ -88,43 +88,47 @@ function playRound(compChoice, humanChoice) {
   roundNumber++;
 }
 
-// For every round of the game
-while (roundNumber <= totalRounds) {
-  // Announce the round number
-  console.log(`Round ${roundNumber}`);
-  if (
-    // if there have been too many invalid entries quit
-    playRound(getComputerChoice(RPS_MAX, CHOICE_OPTIONS), getHumanChoice()) ===
-    "stop"
-  ) {
-    break;
-  } else {
-    // If it's the last round (round number increased in playRound function so >)
-    if (roundNumber > totalRounds) {
-      continue;
+function playGame(maxArray, gameArray) {
+  // For every round of the game
+  while (roundNumber <= totalRounds) {
+    // Announce the round number
+    console.log(`Round ${roundNumber}`);
+    if (
+      // if there have been too many invalid entries quit
+      playRound(getComputerChoice(maxArray, gameArray), getHumanChoice()) ===
+      "stop"
+    ) {
+      break;
     } else {
-      // Report current scores
-      console.log(
-        `Current Score:  Computer: ${computerScore} You: ${humanScore}`
-      );
+      // If it's the last round (round number increased in playRound function so >)
+      if (roundNumber > totalRounds) {
+        continue;
+      } else {
+        // Report current scores
+        console.log(
+          `Current Score:  Computer: ${computerScore} You: ${humanScore}`
+        );
+      }
     }
   }
+
+  // After all rounds have been played announce final score
+  console.log(`Final score:\nComputer: ${computerScore} You: ${humanScore}`);
+  // Message ultimate win or loss
+  if (humanScore > computerScore) {
+    console.log("*********YOU WIN!*********");
+  } else {
+    console.log("**Computer won this time**");
+  }
+
+  // Reset variables before next game
+  computerScore = 0;
+  humanScore = 0;
+  totalRounds = 3;
+  roundNumber = 1;
 }
 
-// After all rounds have been played announce final score
-console.log(`Final score:\nComputer: ${computerScore} You: ${humanScore}`);
-// Message ultimate win or loss
-if (humanScore > computerScore) {
-  console.log("*********YOU WIN!*********");
-} else {
-  console.log("**Computer won this time**");
-}
-
-// Reset variables before next game
-computerScore = 0;
-humanScore = 0;
-totalRounds = 3;
-roundNumber = 1;
+playGame(RPS_MAX, CHOICE_OPTIONS);
 
 /* 
   Pseudocode for playRound function
