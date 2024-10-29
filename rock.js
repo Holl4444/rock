@@ -33,62 +33,60 @@ function getHumanChoice() {
   return H_choice;
 }
 
-// Initiate variables for scores and rounds
-let computerScore = 0;
-let humanScore = 0;
-let totalRounds = 3;
-let roundNumber = 1;
-
-// Funtion to determine the results from one round
-function playRound(compChoice, humanChoice) {
-  // If there's a draw don't update score/round number
-  if (compChoice === humanChoice) {
-    console.log("It's a draw, lets take that round again.");
-    return 0;
-  } else {
-    let winMessage = `You win! ${humanChoice[0].toUpperCase()}${humanChoice.slice(
-      1
-    )} beats ${compChoice}.`;
-    let loseMessage = `You lose! ${compChoice[0].toUpperCase()}${compChoice.slice(
-      1
-    )} beats ${humanChoice}.`;
-    // Should add a winLose function to avoid so much here
-    // Checking through values to determine winner and print result.
-    switch (compChoice) {
-      case "rock":
-        if (humanChoice === "scissors") {
-          computerScore++;
-          console.log(loseMessage);
-        } else {
-          humanScore++;
-          console.log(winMessage);
-        }
-        break;
-      case "paper":
-        if (humanChoice === "rock") {
-          computerScore++;
-          console.log(loseMessage);
-        } else {
-          humanScore++;
-          console.log(winMessage);
-        }
-        break;
-      case "scissors":
-        if (humanChoice === "paper") {
-          computerScore++;
-          console.log(loseMessage);
-        } else {
-          humanScore++;
-          console.log(winMessage);
-        }
-        break;
-    }
-  }
-  //increase round number after a round that didn't end in a draw
-  roundNumber++;
-}
-
 function playGame(maxArray, gameArray) {
+  // Initiate variables for scores and rounds
+  let computerScore = 0;
+  let humanScore = 0;
+  let totalRounds = 5;
+  let roundNumber = 1;
+  // Funtion to determine the results from one round
+  function playRound(compChoice, humanChoice) {
+    // If there's a draw don't update score/round number
+    if (compChoice === humanChoice) {
+      console.log("It's a draw, lets take that round again.");
+      return 0;
+    } else {
+      let winMessage = `You win! ${humanChoice[0].toUpperCase()}${humanChoice.slice(
+        1
+      )} beats ${compChoice}.`;
+      let loseMessage = `You lose! ${compChoice[0].toUpperCase()}${compChoice.slice(
+        1
+      )} beats ${humanChoice}.`;
+      // Should add a winLose function to avoid so much here
+      // Checking through values to determine winner and print result.
+      switch (compChoice) {
+        case "rock":
+          if (humanChoice === "scissors") {
+            computerScore++;
+            console.log(loseMessage);
+          } else {
+            humanScore++;
+            console.log(winMessage);
+          }
+          break;
+        case "paper":
+          if (humanChoice === "rock") {
+            computerScore++;
+            console.log(loseMessage);
+          } else {
+            humanScore++;
+            console.log(winMessage);
+          }
+          break;
+        case "scissors":
+          if (humanChoice === "paper") {
+            computerScore++;
+            console.log(loseMessage);
+          } else {
+            humanScore++;
+            console.log(winMessage);
+          }
+          break;
+      }
+    }
+    //increase round number after a round that didn't end in a draw
+    roundNumber++;
+  }
   // For every round of the game
   while (roundNumber <= totalRounds) {
     // Announce the round number
