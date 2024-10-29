@@ -46,8 +46,12 @@ function playRound(compChoice, humanChoice) {
     console.log("It's a draw, lets take that round again.");
     return 0;
   } else {
-    let winMessage = `You win! ${humanChoice} beats ${compChoice}.`;
-    let loseMessage = `You lose! ${compChoice} beats ${humanChoice}.`;
+    let winMessage = `You win! ${humanChoice[0].toUpperCase()}${humanChoice.slice(
+      1
+    )} beats ${compChoice}.`;
+    let loseMessage = `You lose! ${compChoice[0].toUpperCase()}${compChoice.slice(
+      1
+    )} beats ${humanChoice}.`;
     // Should add a winLose function to avoid so much here
     // Checking through values to determine winner and print result.
     switch (compChoice) {
@@ -108,7 +112,7 @@ while (roundNumber <= totalRounds) {
 }
 
 // After all rounds have been played announce final score
-console.log(`Final score:\nComputer: ${computerScore} You: ${humanScore};`);
+console.log(`Final score:\nComputer: ${computerScore} You: ${humanScore}`);
 // Message ultimate win or loss
 if (humanScore > computerScore) {
   console.log("*********YOU WIN!*********");
