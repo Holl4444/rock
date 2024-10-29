@@ -26,7 +26,57 @@ console.log(getHumanChoice());
 
 let computerScore = 0;
 let humanScore = 0;
+let totalRounds = 5;
+let roundNumber = 1;
 
 function playRound(C_choice, H_choice) {
-  /* Play one round */
+  /* 
+
+  If round number isn't more than the total number of rounds to play:
+
+  Play one round:
+
+  Compare the two arguments
+
+  If they are both equal do not increment the number of rounds and message the human.
+  "It's a draw, lets take that round again."
+
+  Else look at C_choise. 
+  
+  rock > scissors
+  paper > rock
+  scissors > paper
+  
+
+  If it's rock
+    If H_choice is scissors
+      computerScore increases by 1
+      Message human "You lose! Rock beats scissors."
+    Else 
+      humanScore increases by 1
+      Message human `You win! Your choice beats rock.`
+  Else if it's paper
+    If H_choice is rock
+      computerScore increases by 1
+      Message human "You lose! Paper beats rock."
+    Else
+      humanScore increases by 1
+      Message human `You win! Your choice beats paper.`
+  Else (if it's scissors)
+    If H_choice is paper
+      computerScore increases by 1
+      Message human "You lose! Scissors beat paper."
+    Else
+      humanScore increases by 1
+      Message human `You win! Your choice beats scissors.`
+  
+  Message the current scores
+
+  Increment round number by 1;
+
+    let winMessage = `You win! Your choice beats the computer's choice.`
+
+    let loseMessage = `You lose! The computer's choice beats your choice.`
+  
+   */
 }
