@@ -1,0 +1,10 @@
+.hidden {
+  /*  Keeps page layout as though it exists
+    unlike display: none; */
+  visibility: hidden;
+}
+
+#current-score {
+  /* Respects escape characters in template literals */
+  white-space: pre;
+}

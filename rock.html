@@ -3,8 +3,23 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="rock.js"></script>
-    <title>Document</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="rock.js" defer></script>
+    <title>Rock Paper Scissors</title>
   </head>
-  <body></body>
+  <body>
+    <h1>Rock Paper Scissors</h1>
+    <div class="choice-container">
+      <button type="choice" id="rock">Rock</button>
+      <button type="choice" id="paper">Paper</button>
+      <button type="choice" id="scissors">Scissors</button>
+    </div>
+    <div class="update-container">
+      <p id="update"></p>
+      <p id="current-score"></p>
+    </div>
+    <div class="play-again-container">
+      <button type="again" id="go-again" class="hidden">Play Again?</button>
+    </div>
+  </body>
 </html>
