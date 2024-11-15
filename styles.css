@@ -16,8 +16,8 @@ body {
 }
 
 .content {
-  width: 450px;
-  height: 450px;
+  width: 550px;
+  height: 550px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -29,12 +29,12 @@ body {
 }
 
 .hidden {
-  /*  Keeps page layout as though it exists
-    unlike display: none; */
+  /* Keeps page layout as though it exists 
+    unlike display: none;*/
   visibility: hidden;
 }
 
-#current-score {
+.current-score {
   /* Respects escape characters in template literals */
   white-space: pre;
 }
@@ -68,7 +68,6 @@ button {
   height: 50px;
   margin: 10px;
   border: 0;
-  display: flex;
 }
 
 .button-icon {
@@ -76,6 +75,7 @@ button {
   background-color: transparent;
 }
 
+/* The invisible box-shadow makes the buttons react on hover */
 button:hover {
   background-color: #765282;
   border: 1px solid #765282;
@@ -84,8 +84,8 @@ button:hover {
 }
 
 .update-container {
-  min-width: 360px;
-  min-height: 80px;
+  min-width: 440px;
+  min-height: 120px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -96,9 +96,9 @@ button:hover {
   background-color: #ff450090;
 }
 
-#current-score,
 .initial-css,
-.draw {
+.draw,
+.current-score {
   background-color: transparent;
   border: 1px solid #ff450010;
   color: #f3a229;
@@ -116,4 +116,27 @@ button:hover {
   border: 1px solid #f3a229;
   border-radius: 6px;
   color: #a72801;
+}
+
+.play-again-container {
+  padding-bottom: 3vh;
+  background-color: transparent;
+}
+
+#go-again {
+  width: 130px;
+  text-align: center;
+  background-color: #f3a229;
+  color: #a72801;
+  font-size: 1.05rem;
+  font-weight: 550;
+  border: 1px solid #f3a229;
+  border-radius: 5px;
+}
+
+.game-result {
+  background-color: lightgray;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  color: purple;
 }

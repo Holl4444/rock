@@ -20,11 +20,13 @@ let roundNumber = 1;
 // Funtion to determine the results from one round
 function playRound(compChoice, humanChoice) {
   update.textContent = "";
-  update.classList.toggle('initial-css');
+  update.classList.toggle("initial-css");
   if (update.classList.contains("win")) {
     update.classList.toggle("win");
   } else if (update.classList.contains("lose")) {
     update.classList.toggle("lose");
+  } else if (update.classList.contains("draw")) {
+    update.classList.toggle("draw");
   }
 
   currentScore.textContent = `Round ${roundNumber}`;
@@ -81,7 +83,7 @@ function playRound(compChoice, humanChoice) {
   const play = playGame(winner);
 
   if (play === "end") {
-    // Disable all choice buttons and make play again visible.
+    // Disable all choice buttons and make play again button visible.
     for (let i = 0; i < optionsButtons.length; i++) {
       optionsButtons[i].disabled = true;
     }
@@ -89,18 +91,19 @@ function playRound(compChoice, humanChoice) {
   }
 }
 
+// Update scores and display text accordingly
 function playGame(outcome) {
   if (outcome === "comp") {
     computerScore++;
-    update.classList.toggle('lose');
+    update.classList.toggle("lose");
     update.classList.toggle("initial-css");
   } else if (outcome === "human") {
     humanScore++;
-    update.classList.toggle('win');
-    update.classList.toggle("initial-css"); 
+    update.classList.toggle("win");
+    update.classList.toggle("initial-css");
   } else {
-    update.classList.toggle('draw');
-    update.classList.toggle("initial-css");       
+    update.classList.toggle("draw");
+    update.classList.toggle("initial-css");
   }
   // For every round of the game announce the round number + report current scores
   if (roundNumber <= 5) {
@@ -110,10 +113,12 @@ function playGame(outcome) {
     // After all rounds have been played announce final score
     currentScore.textContent += `\nFinal score: Computer: ${computerScore} You: ${humanScore}`;
     if (humanScore > computerScore) {
-      currentScore.textContent = "*********YOU WIN!*********";
+      currentScore.textContent = "*****YOU WON THE GAME!*****";
     } else {
       currentScore.textContent = "**Computer won this time**";
     }
+    currentScore.classList.toggle("game-result");
+
     // Reset variables before next game
     computerScore = 0;
     humanScore = 0;
@@ -123,15 +128,19 @@ function playGame(outcome) {
   }
 }
 
+// Run the game based around choice buttons interaction
 options.addEventListener("click", (e) => {
   let humanChoice = e.target.id;
   playRound(getComputerChoice(), humanChoice);
 });
 
+// Eventlistener for another match button. Resets text and buttons.
 goAgain.addEventListener("click", () => {
   goAgain.classList.toggle("hidden");
   update.textContent = "Good luck!";
   for (let i = 0; i < optionsButtons.length; i++) {
     optionsButtons[i].disabled = false;
   }
+  currentScore.textContent = "";
+  currentScore.classList.toggle("game-result");
 });
