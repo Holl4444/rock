@@ -4,6 +4,9 @@ const goAgain = document.getElementById("go-again");
 const update = document.getElementById("update");
 update.textContent = "Goodluck";
 const currentScore = document.getElementById("current-score");
+const imageForCompChoice = document.getElementById("comp-choice-img");
+const compChoiceLabel = document.getElementById('comp-choice-label');
+const compChoiceContainer = document.querySelector('.comp-choice-container');
 
 getComputerChoice = () => {
   const C_CHOICES = ["rock", "paper", "scissors"];
@@ -12,6 +15,19 @@ getComputerChoice = () => {
   // return what we find at this index of the array
   return C_CHOICES[C_choice];
 };
+
+const displayCompChoice = (item) => {
+  if (item === "rock") {
+    imageForCompChoice.src = "Images/rock-img.png"; 
+  } else if (item === "paper") {
+    imageForCompChoice.src = "Images/paper-img.png";
+  } else {
+    imageForCompChoice.src = "Images/scissors-img.png";
+  }
+  compChoiceLabel.textContent = `The computer chose ${item}:`;
+  compChoiceContainer.classList.toggle('hidden');
+}
+
 // Initiate variables for round scores
 let humanScore = 0;
 let computerScore = 0;
@@ -19,7 +35,8 @@ let roundNumber = 1;
 
 // Funtion to determine the results from one round
 function playRound(compChoice, humanChoice) {
-  update.textContent = "";
+  displayCompChoice(compChoice);
+  // Reset the update box styling
   update.classList.toggle("initial-css");
   if (update.classList.contains("win")) {
     update.classList.toggle("win");
@@ -30,7 +47,7 @@ function playRound(compChoice, humanChoice) {
   }
 
   currentScore.textContent = `Round ${roundNumber}`;
-  // Initiate win/lose messages
+  // Initiate win/lose messages and capitalise choice
   let winner = "";
   let winMessage = `You win! ${humanChoice[0].toUpperCase()}${humanChoice.slice(
     1
@@ -131,12 +148,16 @@ function playGame(outcome) {
 // Run the game based around choice buttons interaction
 options.addEventListener("click", (e) => {
   let humanChoice = e.target.id;
+  if (!compChoiceContainer.classList.contains("hidden")){
+  compChoiceContainer.classList.toggle("hidden");
+  }
   playRound(getComputerChoice(), humanChoice);
 });
 
 // Eventlistener for another match button. Resets text and buttons.
 goAgain.addEventListener("click", () => {
   goAgain.classList.toggle("hidden");
+  compChoiceContainer.classList.toggle("hidden");
   update.textContent = "Good luck!";
   for (let i = 0; i < optionsButtons.length; i++) {
     optionsButtons[i].disabled = false;
