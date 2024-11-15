@@ -8,18 +8,24 @@
     <title>Rock Paper Scissors</title>
   </head>
   <body>
-    <h1>Rock Paper Scissors</h1>
-    <div class="choice-container">
-      <button type="choice" id="rock">Rock</button>
-      <button type="choice" id="paper">Paper</button>
-      <button type="choice" id="scissors">Scissors</button>
+    <div class="content">
+      <div class="text-container">
+        <h1>Rock Paper Scissors</h1>
+        <p>Make your choice!</p>
+      </div>
+      <div class="choice-container">
+        <button type="choice" class="rock"><img id="rock" src="Images/rock-img.png" alt="Button for rock" class="button-icon"/></button>
+        <button type="choice" class="paper"><img id="paper" src="Images/paper-img.png" alt="Button for paper" class="button-icon"/></button>
+        <button type="choice" class="scissors"><img id="scissors" src="Images/scissors-img.png" alt="Button for scissors" class="button-icon"/></button>
+      </div>
+      <div class="update-container">
+        <p id="update"></p>
+        <p id="current-score"></p>
+      </div>
+      <div class="play-again-container">
+        <button type="again" id="go-again" class="hidden">Play Again?</button>
+      </div>
     </div>
-    <div class="update-container">
-      <p id="update"></p>
-      <p id="current-score"></p>
-    </div>
-    <div class="play-again-container">
-      <button type="again" id="go-again" class="hidden">Play Again?</button>
-    </div>
+    </body>
   </body>
 </html>

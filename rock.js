@@ -85,6 +85,7 @@ function playRound(compChoice, humanChoice) {
 function playGame(outcome) {
   if (outcome === "comp") {
     computerScore++;
+    update.setAttribute("style", "background-color: #ff450090; border: 1px solid #ff450090; border-radius: 6px; color: #f1e3b9;");
   } else if (outcome === "human") {
     humanScore++;
   }
