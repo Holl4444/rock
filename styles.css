@@ -1,3 +1,19 @@
+* {
+    box-sizing: border-box;
+    background-color: #765282;
+    color: #5ebb3e;
+}
+
+html {
+height: 100vh;
+display: flex;
+}
+
+body {
+    text-align: center;
+    margin: auto;  
+}
+
 .hidden {
   /*  Keeps page layout as though it exists
     unlike display: none; */
