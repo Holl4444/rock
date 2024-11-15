@@ -4,6 +4,7 @@
   color: #e2b12b;
   padding: 0;
   margin: 0;
+  font-family: "roboto", serif;
 }
 
 body {
@@ -21,7 +22,8 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 6px double #8f1a1a;
+  border: 6px double #a72801;
+  border-radius: 50px 50px;
   box-shadow: 0px 0px 3px 1px #612475;
   row-gap: 30px;
 }
@@ -38,19 +40,21 @@ body {
 }
 
 .text-container {
+  margin-top: 3vh;
   height: 80px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  text-shadow: #512361 1px 0 5px;
+  row-gap: 2vh;
 }
 
 .text-container p {
-  margin-top: auto;
   color: #dab656;
 }
 
 .choice-container {
-  margin-top: 10px;
+  margin: 15px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -68,15 +72,15 @@ button {
 }
 
 .button-icon {
-    height: 50px;
-    background-color: transparent;
+  height: 50px;
+  background-color: transparent;
 }
 
 button:hover {
-    background-color: #765282;
-    border: 1px solid  #765282;
-    border-radius: 10px;
-    box-shadow: 0px 0px 5px 2px #765282;
+  background-color: #765282;
+  border: 1px solid #765282;
+  border-radius: 10px;
+  box-shadow: 0px 0px 5px 2px #765282;
 }
 
 .update-container {
@@ -87,12 +91,29 @@ button:hover {
   justify-content: center;
   row-gap: 0.5vw;
   padding: 1vh 1vw;
-  border: 2px solid #e7dbe7;
+  border: 2px solid #b5bac5;
+  border-radius: 5px;
+  background-color: #ff450090;
 }
 
-#update,
-#current-score {
-    background-color: #ff450090;
-    color: #f1e3b9;
+#current-score,
+.initial-css,
+.draw {
+  background-color: transparent;
+  border: 1px solid #ff450010;
+  color: #f3a229;
+  font-size: 1.1rem;
 }
 
+.lose {
+  background-color: #ff450070;
+  border: 1px solid #ff450070;
+  border-radius: 6px;
+}
+
+.win {
+  background-color: #f3a229;
+  border: 1px solid #f3a229;
+  border-radius: 6px;
+  color: #a72801;
+}

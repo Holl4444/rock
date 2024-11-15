@@ -20,6 +20,13 @@ let roundNumber = 1;
 // Funtion to determine the results from one round
 function playRound(compChoice, humanChoice) {
   update.textContent = "";
+  update.classList.toggle('initial-css');
+  if (update.classList.contains("win")) {
+    update.classList.toggle("win");
+  } else if (update.classList.contains("lose")) {
+    update.classList.toggle("lose");
+  }
+
   currentScore.textContent = `Round ${roundNumber}`;
   // Initiate win/lose messages
   let winner = "";
@@ -85,9 +92,15 @@ function playRound(compChoice, humanChoice) {
 function playGame(outcome) {
   if (outcome === "comp") {
     computerScore++;
-    update.setAttribute("style", "background-color: #ff450090; border: 1px solid #ff450090; border-radius: 6px; color: #f1e3b9;");
+    update.classList.toggle('lose');
+    update.classList.toggle("initial-css");
   } else if (outcome === "human") {
     humanScore++;
+    update.classList.toggle('win');
+    update.classList.toggle("initial-css"); 
+  } else {
+    update.classList.toggle('draw');
+    update.classList.toggle("initial-css");       
   }
   // For every round of the game announce the round number + report current scores
   if (roundNumber <= 5) {
