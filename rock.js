@@ -16,7 +16,6 @@ let roundNumber = 1;
 // Funtion to determine the results from one round
 function playRound(compChoice, humanChoice) {
   displayCompChoice(compChoice);
-  resetUpdateClasses();
 
   // Announce Round Number
   currentScore.textContent = `Round ${roundNumber}`;
@@ -97,7 +96,9 @@ const displayCompChoice = (item) => {
 
 const resetUpdateClasses = () => {
   // Reset the update box styling ( at start of every round)
-  update.classList.toggle("initial-css");
+  if (!update.classList.contains("initial-css")) {
+    update.classList.toggle("initial-css");
+  }
   if (update.classList.contains("win")) {
     update.classList.toggle("win");
   } else if (update.classList.contains("lose")) {
@@ -175,6 +176,7 @@ const roundResult = (choiceC, choiceH) => {
 // Run the game based around choice buttons interaction
 options.addEventListener("click", (e) => {
   let humanChoice = e.target.id;
+  resetUpdateClasses();
   // Hide computer choice from any previous rounds
   if (!compChoiceContainer.classList.contains("hidden")) {
     compChoiceContainer.classList.toggle("hidden");
@@ -185,6 +187,7 @@ options.addEventListener("click", (e) => {
 // Eventlistener for rematch button. Resets text and re-enables choice buttons.
 goAgain.addEventListener("click", () => {
   goAgain.classList.toggle("hidden");
+  resetUpdateClasses();
   compChoiceContainer.classList.toggle("hidden");
   update.textContent = "Good luck!";
   for (let i = 0; i < optionsButtons.length; i++) {
