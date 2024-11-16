@@ -132,7 +132,7 @@ function playGame(outcome) {
     if (humanScore > computerScore) {
       currentScore.textContent = "*****YOU WON THE GAME!*****";
     } else {
-      currentScore.textContent = "**Computer won this time**";
+      currentScore.textContent = "**Computer won the game**";
     }
     currentScore.classList.toggle("game-result");
 
